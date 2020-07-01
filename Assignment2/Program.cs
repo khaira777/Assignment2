@@ -10,6 +10,15 @@ namespace Assignment2
     {
         static void Main(string[] args)
         {
+            TiktokManager.Initialize();
+            TiktokManager.Show();
+            TiktokManager.Show("khaira");
+            TiktokManager.Show(88);
+            TiktokManager.Show(Audience.Group);
+
+
+            //
+            Console.ReadLine();
         }
     }
 }

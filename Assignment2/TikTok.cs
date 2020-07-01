@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Assignment2
 {
-    enum Audience { World, Group, Special }
+    public enum Audience { World, Group, Special }
     class TikTok
     {
         private static int _ID;
@@ -38,7 +38,7 @@ namespace Assignment2
 
         public override string ToString()
         {
-            return base.ToString();
+            return $"({Id}) {HashTag} : From {Originator}, have length {Length} and audience is {Audience}";
         }
 
         public static TikTok Parse(string line)
@@ -50,6 +50,7 @@ namespace Assignment2
             string hash = parts[2];
             Audience aud = (Audience)Enum.Parse(typeof(Audience), parts[3]);
             TikTok t = new TikTok(01, origin, len, hash, aud);
+            Console.WriteLine(t+"   //printing t");
             return t;
         }
     }
