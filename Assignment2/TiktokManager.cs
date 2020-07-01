@@ -12,26 +12,23 @@ namespace Assignment2
     {
         private static List<TikTok> TIKTOKS;
         private static string FILENAME = "tiktok.txt";
-
         static TiktokManager()
         {
             TIKTOKS = new List<TikTok>();
-            string line;
-            StreamReader file = new StreamReader(FILENAME);
-            while (null != (line = file.ReadLine()))
+            TextReader file = new StreamReader(FILENAME);
+            while (null != file.ReadLine())
             {
-                line = file.ReadLine();
-                Console.WriteLine(line + "   //printing line");
-                TIKTOKS.Add(TikTok.Parse(line));
+                TIKTOKS.Add(TikTok.Parse(file.ReadLine()));
             }
         }
         public static void Initialize()
         {
-            TIKTOKS.Add(new TikTok("India",55,"Khaira",Audience.World));
-            TIKTOKS.Add(new TikTok("USA", 66, "GK", Audience.Group));
-            TIKTOKS.Add(new TikTok("Canada", 77, "Hyman", Audience.Group));
-            TIKTOKS.Add(new TikTok("Australia", 88, "DudePerfect", Audience.World));
-            TIKTOKS.Add(new TikTok("UK", 99, "Beneke", Audience.Special));
+            //Assigns the TIKOKS field
+            TIKTOKS.Add(new TikTok(originator: "India",length: 55,hashTag: "Khaira",audience: Audience.World));
+            TIKTOKS.Add(new TikTok(originator: "USA", length: 66, hashTag: "GK", audience: Audience.Group));
+            TIKTOKS.Add(new TikTok(originator: "Canada", length: 77, hashTag: "Hyman", audience: Audience.Group));
+            TIKTOKS.Add(new TikTok(originator: "Australia", length: 88, hashTag: "DudePerfect", audience: Audience.World));
+            TIKTOKS.Add(new TikTok(originator: "UK", length: 99, hashTag: "Beneke", audience: Audience.Special));
         }
         public static void Show()
         {
@@ -44,12 +41,11 @@ namespace Assignment2
         {
             foreach (TikTok tiktok in TIKTOKS)
             {
-                if (hashtag.Equals(tiktok.HashTag, StringComparison.InvariantCultureIgnoreCase))
+                if (tiktok.HashTag.Equals(hashtag, StringComparison.InvariantCultureIgnoreCase))
                 {
                     Console.WriteLine(tiktok);
                 }
             }
-            
         }
         public static void Show(int length)
         {
@@ -65,12 +61,11 @@ namespace Assignment2
         {
             foreach (TikTok tiktok in TIKTOKS)
             {
-                if (tiktok.Audience == audience)
+                if (tiktok.Audience.Equals(audience))
                 {
                     Console.WriteLine(tiktok);
                 }
             }
         }
-
     }
 }

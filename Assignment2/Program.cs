@@ -13,11 +13,9 @@ namespace Assignment2
             TiktokManager.Initialize();
             TiktokManager.Show();
             TiktokManager.Show("khaira");
-            TiktokManager.Show(88);
+            TiktokManager.Show(50);
             TiktokManager.Show(Audience.Group);
 
-
-            //
             Console.ReadLine();
         }
     }

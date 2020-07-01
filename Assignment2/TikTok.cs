@@ -15,19 +15,17 @@ namespace Assignment2
         public int Length { get; }
         public string HashTag { get; }
         public Audience Audience { get; }
-        public int Id { get; }
-
+        public string Id { get; }
         public TikTok(string originator, int length, string hashTag, Audience audience)
         {
             Originator = originator;
             Length = length;
             HashTag = hashTag;
             Audience = audience;
-            Id = _ID;
+            Id = Convert.ToString(TikTok._ID);
             _ID++;
         }
-
-        public TikTok(int id, string originator, int length, string hashTag, Audience audience)
+        public TikTok(string id, string originator, int length, string hashTag, Audience audience)
         {
             Id = id;
             Originator = originator;
@@ -35,22 +33,18 @@ namespace Assignment2
             HashTag = hashTag;
             Audience = audience;
         }
-
         public override string ToString()
         {
             return $"({Id}) {HashTag} : From {Originator}, have length {Length} and audience is {Audience}";
         }
-
         public static TikTok Parse(string line)
         {
-
-            String[] parts = line.Split('\t');
+            string[] parts = line.Split('\t');
             string origin = parts[0];
-            int len = Convert.ToInt32(parts[1]);
+            int leng = Convert.ToInt32(parts[1]);
             string hash = parts[2];
             Audience aud = (Audience)Enum.Parse(typeof(Audience), parts[3]);
-            TikTok t = new TikTok(01, origin, len, hash, aud);
-            Console.WriteLine(t+"   //printing t");
+            TikTok t = new TikTok("01", origin, leng, hash, aud);
             return t;
         }
     }
